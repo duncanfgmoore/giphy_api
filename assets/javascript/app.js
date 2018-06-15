@@ -11,9 +11,9 @@ var gifCount = 10;
 $(document).ready(function(){
 
 
-var playerArray = ["Sidney Crosby", "Jamie Benn", "Joe Thornton", "Wayne Gretzky", "Bobby Orr",
-"Mark Messier", "Mitch Marner", "Matt Martin", "Ryan Getzlaf", "Auston Mathews", "John Tavares",
-"Claude Giroux", "Mike Modano", "Jack Eichel", "Bobby Ryan", "Eric Staal", "Erik Karlsson"];
+var playerArray = ["Sidney Crosby", "Patrice Bergeron", "Joe Thornton", "Wayne Gretzky", "Bobby Orr",
+"Patrick Kane", "Mitch Marner", "Matt Martin", "Ryan Getzlaf", "Auston Matthews", "John Tavares",
+"Claude Giroux", "Henrick Sedin", "Jack Eichel", "Bobby Ryan", "Eric Staal", "Erik Karlsson"];
 
 
 //creating the buttons for the Array
