@@ -1,0 +1,49 @@
+body {
+    background-image: url("../images/background.jpeg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+h1 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 25px;
+    color: white;
+}
+
+form {
+    float: right;
+    margin-right: 50px;
+}
+
+
+#gifArea {
+    float: left;
+    width: 65%;
+}
+
+input{
+    margin-bottom: 10px;
+}
+
+#submitButton{
+    border-radius: 10px;
+}
+
+button {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 24px;
+    color: white;
+}
+
+label {
+    color: white;
+    font-size: 24px;
+}
+
+
+

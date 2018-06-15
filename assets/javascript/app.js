@@ -24,7 +24,7 @@ function startingArray(){
 
     for(var i = 0; i < playerArray.length; i++){
 
-        var buttons = $("<button>");
+        var buttons = $("<button class='btn btn-info'>");
 
         buttons.addClass("createGif");
 
@@ -72,6 +72,7 @@ $("#buttonArea").on("click", ".createGif", function(){
     
     var queryUrl = "http://api.giphy.com/v1/gifs/search?q=" + selectedPlayer + "&api_key=dc6zaTOxFJmzC&limit=10";
     
+   
 
     $.ajax({
         url:queryUrl,
@@ -82,10 +83,27 @@ $("#buttonArea").on("click", ".createGif", function(){
 
         
             var rating = response.data[i].rating;
+
+            var upperCaseRating = rating.toUpperCase();
     
-            var p = $("<p>").text("Rating: " + rating);
+            var p = $("<p>").text("Rating: " + upperCaseRating);
+
+           
     
-            var gifItself = $("<img>").attr( "src", response.data[i].images.original.url);
+            var gifItself = $("<img>")
+            
+            
+            gifItself.attr( "src", response.data[i].images.original_still.url);
+
+            gifItself.attr("data-still", response.data[i].images.original_still.url);
+
+            gifItself.attr("data-animate", response.data[i].images.original.url);
+            
+            gifItself.attr("data-state", "still");
+
+
+            gifItself.addClass("gifState");
+        
     
             $("#gifArea").append(p);
             $("#gifArea").append(gifItself);
@@ -98,6 +116,27 @@ $("#buttonArea").on("click", ".createGif", function(){
     $("#gifArea").empty();
 })
     
+
+$("#gifArea").on("click", ".gifState", function(){
+
+    var state = $(this).attr("data-state");
+
+    if (state == "still") {
+
+        $(this).attr("src", $(this).data("animate"));
+        $(this).attr("data-state", "animate");
+
+        
+
+    } else{
+
+        $(this).attr("src", $(this).data("still"));
+        $(this).attr("data-state", "still");
+    }
+
+   
+});
+
 
 
 //set up click function for gif to only play when clicked
