@@ -10,6 +10,8 @@ var gifCount = 10;
 
 $(document).ready(function(){
 
+   
+
 
 var playerArray = ["Sidney Crosby", "Patrice Bergeron", "Joe Thornton", "Wayne Gretzky", "Bobby Orr",
 "Patrick Kane", "Mitch Marner", "Matt Martin", "Ryan Getzlaf", "Auston Matthews", "John Tavares",
@@ -88,9 +90,8 @@ $("#buttonArea").on("click", ".createGif", function(){
     
             var p = $("<p>").text("Rating: " + upperCaseRating);
 
-           
-    
-            var gifItself = $("<img>")
+      
+            var gifItself = $("<img>");
             
             
             gifItself.attr( "src", response.data[i].images.original_still.url);
@@ -107,13 +108,14 @@ $("#buttonArea").on("click", ".createGif", function(){
     
             $("#gifArea").append(p);
             $("#gifArea").append(gifItself);
+           
 
         
         }
 
     });
 
-    $("#gifArea").empty();
+    
 })
     
 
@@ -136,14 +138,6 @@ $("#gifArea").on("click", ".gifState", function(){
 
    
 });
-
-
-
-//set up click function for gif to only play when clicked
-
-//set up function for gif to freeze when clicked again
-
-
 
 
 

@@ -19,7 +19,7 @@ form {
 
 #gifArea {
     float: left;
-    width: 65%;
+    width: 75%;
 }
 
 input{
@@ -43,6 +43,10 @@ p {
 label {
     color: white;
     font-size: 24px;
+}
+
+#download {
+    margin-left: 10px;
 }
 
 
