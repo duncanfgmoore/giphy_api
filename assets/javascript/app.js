@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 var playerArray = ["Sidney Crosby", "Patrice Bergeron", "Joe Thornton", "Wayne Gretzky", "Bobby Orr",
 "Patrick Kane", "Mitch Marner", "Matt Martin", "Ryan Getzlaf", "Auston Matthews", "John Tavares",
-"Claude Giroux", "Henrick Sedin", "Jack Eichel", "Bobby Ryan", "Eric Staal", "Erik Karlsson"];
+"Claude Giroux", "Corey Perry", "Jack Eichel", "Bobby Ryan", "Eric Staal", "Erik Karlsson"];
 
 
 //creating the buttons for the Array
@@ -90,7 +90,6 @@ $("#buttonArea").on("click", ".createGif", function(){
     
             var p = $("<p>").text("Rating: " + upperCaseRating);
 
-      
             var gifItself = $("<img>");
             
             
@@ -108,7 +107,7 @@ $("#buttonArea").on("click", ".createGif", function(){
     
             $("#gifArea").append(p);
             $("#gifArea").append(gifItself);
-           
+            
 
         
         }
