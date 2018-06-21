@@ -72,7 +72,7 @@ $("#buttonArea").on("click", ".createGif", function(){
 
     var selectedPlayer = $(this).data("name");
     
-    var queryUrl = "http://api.giphy.com/v1/gifs/search?q=" + selectedPlayer + "&api_key=dc6zaTOxFJmzC&limit=10";
+    var queryUrl = "https://api.giphy.com/v1/gifs/search?q=" + selectedPlayer + "&api_key=dc6zaTOxFJmzC&limit=10";
     
    
 
