@@ -11,3 +11,6 @@ The Hockey GIF Generator is an application allows you to see a collection of you
 - Bootstrap
 - APIs
 
+# Screen Shot 
+
+![screenshot](assets/images/screenshotGif.jpeg)
