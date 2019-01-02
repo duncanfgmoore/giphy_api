@@ -1,144 +1,114 @@
 //setting up variables
 
-
 var buttons;
 var textValue;
 var arrayCount = 0;
 var gifCount = 10;
 
+$(document).ready(function() {
+  var playerArray = [
+    "Sidney Crosby",
+    "Patrice Bergeron",
+    "Joe Thornton",
+    "Wayne Gretzky",
+    "Bobby Orr",
+    "Patrick Kane",
+    "Mitch Marner",
+    "Matt Martin",
+    "Ryan Getzlaf",
+    "Auston Matthews",
+    "John Tavares",
+    "Claude Giroux",
+    "Corey Perry",
+    "Jack Eichel",
+    "Bobby Ryan",
+    "Eric Staal",
+    "Erik Karlsson"
+  ];
 
+  //creating the buttons for the Array
 
-$(document).ready(function(){
-
-   
-
-
-var playerArray = ["Sidney Crosby", "Patrice Bergeron", "Joe Thornton", "Wayne Gretzky", "Bobby Orr",
-"Patrick Kane", "Mitch Marner", "Matt Martin", "Ryan Getzlaf", "Auston Matthews", "John Tavares",
-"Claude Giroux", "Corey Perry", "Jack Eichel", "Bobby Ryan", "Eric Staal", "Erik Karlsson"];
-
-
-//creating the buttons for the Array
-
-function startingArray(){
-
+  function startingArray() {
     $("#buttonArea").empty();
 
-    for(var i = 0; i < playerArray.length; i++){
+    for (var i = 0; i < playerArray.length; i++) {
+      var buttons = $("<button class='btn btn-info'>");
 
-        var buttons = $("<button class='btn btn-info'>");
+      buttons.addClass("createGif");
 
-        buttons.addClass("createGif");
+      buttons.attr("data-name", playerArray[i]);
 
-        buttons.attr("data-name", playerArray[i]);
+      buttons.text(playerArray[i]);
 
-        buttons.text(playerArray[i]);
-
-
-        $("#buttonArea").append(buttons);
-
-        
-
+      $("#buttonArea").append(buttons);
     }
-}
+  }
 
-startingArray();
+  startingArray();
 
-
-
-
-//set up on click that creates a button
-$("#submitButton").on("click", function(){
-
+  //set up on click that creates a button
+  $("#submitButton").on("click", function() {
     event.preventDefault();
 
-    var textValue = $("#searchBox").val().trim();
-
+    var textValue = $("#searchBox")
+      .val()
+      .trim();
     playerArray.push(textValue);
-
     startingArray();
-
     $("#searchBox").val(" ");
-
     return false;
-  
-    
-});
+  });
 
-
-
-//creating click function for when added buttons are pressed
-$("#buttonArea").on("click", ".createGif", function(){
-
+  //creating click function for when added buttons are pressed
+  $("#buttonArea").on("click", ".createGif", function() {
     var selectedPlayer = $(this).data("name");
-    
-    var queryUrl = "https://api.giphy.com/v1/gifs/search?q=" + selectedPlayer + "&api_key=dc6zaTOxFJmzC&limit=10";
-    
-   
+
+    var queryUrl =
+      "https://api.giphy.com/v1/gifs/search?q=" +
+      selectedPlayer +
+      "&api_key=dc6zaTOxFJmzC&limit=10";
 
     $.ajax({
-        url:queryUrl,
-        method: "GET"
-    }).then(function(response){
-       
-        for(var i = 0; i < response.data.length; i++){
+      url: queryUrl,
+      method: "GET"
+    }).then(function(response) {
+      for (var i = 0; i < response.data.length; i++) {
+        var rating = response.data[i].rating;
 
-        
-            var rating = response.data[i].rating;
+        var upperCaseRating = rating.toUpperCase();
 
-            var upperCaseRating = rating.toUpperCase();
-    
-            var p = $("<p>").text("Rating: " + upperCaseRating);
+        var p = $("<p>").text("Rating: " + upperCaseRating);
 
-            var gifItself = $("<img>");
-            
-            
-            gifItself.attr( "src", response.data[i].images.original_still.url);
+        var gifItself = $("<img>");
 
-            gifItself.attr("data-still", response.data[i].images.original_still.url);
+        gifItself.attr("src", response.data[i].images.original_still.url);
 
-            gifItself.attr("data-animate", response.data[i].images.original.url);
-            
-            gifItself.attr("data-state", "still");
+        gifItself.attr(
+          "data-still",
+          response.data[i].images.original_still.url
+        );
 
+        gifItself.attr("data-animate", response.data[i].images.original.url);
 
-            gifItself.addClass("gifState");
-        
-    
-            $("#gifArea").append(p);
-            $("#gifArea").append(gifItself);
-            
+        gifItself.attr("data-state", "still");
 
-        
-        }
+        gifItself.addClass("gifState");
 
+        $("#gifArea").append(p);
+        $("#gifArea").append(gifItself);
+      }
     });
+  });
 
-    
-})
-    
-
-$("#gifArea").on("click", ".gifState", function(){
-
+  $("#gifArea").on("click", ".gifState", function() {
     var state = $(this).attr("data-state");
 
     if (state == "still") {
-
-        $(this).attr("src", $(this).data("animate"));
-        $(this).attr("data-state", "animate");
-
-        
-
-    } else{
-
-        $(this).attr("src", $(this).data("still"));
-        $(this).attr("data-state", "still");
+      $(this).attr("src", $(this).data("animate"));
+      $(this).attr("data-state", "animate");
+    } else {
+      $(this).attr("src", $(this).data("still"));
+      $(this).attr("data-state", "still");
     }
-
-   
+  });
 });
-
-
-
-});
-
