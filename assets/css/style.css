@@ -18,7 +18,8 @@ form {
 
 
 #gifArea {
-    float: left;
+   margin-left: auto;
+   margin-right: auto;
     width: 75%;
     margin-bottom: 20px;
 }
